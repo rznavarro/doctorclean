@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-inter);
+    background-color: #fcfcfc;
+    color: #111111;
+  }
+
+  body {
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background-color: #000000;
+    color: #ffffff;
+  }
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-mega {
+  font-size: clamp(3.5rem, 20.8vw, 22rem);
+  line-height: 0.75;
+  letter-spacing: -0.04em;
+}
+
+/* Custom button hover mechanics according to Section 5:
+   bg-[#1a1a1a], text white 15px font-medium, rounded-md,
+   hover: panel #fcfcfc enters from -101% to 0 (700ms cubic-bezier(0.16,1,0.3,1)),
+   text and icon become #111, icon scale-110 -rotate-12 -translate-y-1,
+   button translates -0.5px and gains hard shadow 3px 3px 0 rgba(17,17,17,.5)
+*/
+.btn-primary-editorial {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.5rem;
+  background-color: #1a1a1a;
+  border: 1px solid #1a1a1a;
+  border-radius: 0.375rem;
+  color: #ffffff;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  isolation: isolate;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-primary-editorial .btn-slide-panel {
+  position: absolute;
+  inset: 0;
+  background-color: #fcfcfc;
+  transform: translateX(-101%);
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
+}
+
+.btn-primary-editorial:hover .btn-slide-panel {
+  transform: translateX(0);
+}
+
+.btn-primary-editorial:hover {
+  transform: translateY(-0.5px);
+  box-shadow: 3px 3px 0 rgba(17, 17, 17, 0.5);
+  color: #111111;
+}
+
+.btn-primary-editorial:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn-primary-editorial .btn-content {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.btn-primary-editorial .btn-icon-bubble {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary-editorial:hover .btn-icon-bubble {
+  transform: scale(1.1) rotate(-12deg) translateY(-2px);
+}
+
+/* Inverted version for dark sections (#0a0a0a) */
+.btn-primary-inverted {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 0.375rem;
+  color: #111111;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  isolation: isolate;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-primary-inverted .btn-slide-panel {
+  position: absolute;
+  inset: 0;
+  background-color: #0a0a0a;
+  transform: translateX(-101%);
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
+}
+
+.btn-primary-inverted:hover .btn-slide-panel {
+  transform: translateX(0);
+}
+
+.btn-primary-inverted:hover {
+  transform: translateY(-0.5px);
+  box-shadow: 3px 3px 0 rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.btn-primary-inverted:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn-primary-inverted .btn-content {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.btn-primary-inverted .btn-icon-bubble {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary-inverted:hover .btn-icon-bubble {
+  transform: scale(1.1) rotate(-12deg) translateY(-2px);
+}
+
+/* Circular secondary button */
+.btn-secondary-circle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.btn-secondary-circle .circle-ring {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  border: 1px solid #9ca3af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111111;
+  background: transparent;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-secondary-circle:hover .circle-ring {
+  background-color: #000000;
+  border-color: #000000;
+  color: #ffffff;
+}
+
+/* Hide scrollbars for snap ribbons while retaining scroll functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

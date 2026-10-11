@@ -1,0 +1,6 @@
+{
+  "name": "Doctor Clean - Lavado de Alfombras a Domicilio",
+  "description": "Rediseño editorial de Doctor Clean: lavado de alfombras, tapices, colchones y decapado de piso flotante a domicilio en el sector oriente de Santiago.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
